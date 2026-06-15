@@ -193,7 +193,7 @@ for %%f in (npp.*.Installer.exe) do set "nppInstallerVar=%%f"
 
 
 rem get the version string "6.9" in %VERSION%
-set "VERSION=%nppInstallerVar:npp.=%"
+set "VERSION=%nppInstallerVar:npp=%"
 rem replace "npp." with nothing in "npp.6.9.Installer.exe" - now VERSION is "6.9.Installer.exe"
 
 rem echo %VERSION%
