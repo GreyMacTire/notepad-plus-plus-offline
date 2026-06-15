@@ -1365,36 +1365,11 @@ bool NppParameters::load()
 
 	_sessionPath = _userPath; // Session stores the absolute file path, it should never be on cloud
 
-	// Detection cloud settings
-	std::wstring cloudChoicePath{_userPath};
-	cloudChoicePath += L"\\cloud\\choice";
-
-	//
-	// the 2nd priority: Cloud Choice Path
-	//
-	_isCloud = doesFileExist(cloudChoicePath.c_str());
-	if (_isCloud)
-	{
-		// Read cloud choice
-		std::wstring cloudChoiceStrW = L"";
-		bool bLoadingFailed = false;
-		std::string cloudChoiceStr = getFileContent(cloudChoicePath.c_str(), &bLoadingFailed);
-		if (!bLoadingFailed)
-		{
-			WcharMbcsConvertor& wmc = WcharMbcsConvertor::getInstance();
-			cloudChoiceStrW = wmc.char2wchar(cloudChoiceStr.c_str(), SC_CP_UTF8);
-		}
-		if (!cloudChoiceStrW.empty() && doesDirectoryExist(cloudChoiceStrW.c_str()))
-		{
-			_userPath = cloudChoiceStrW;
-			_nppGUI._cloudPath = cloudChoiceStrW;
-			_initialCloudChoice = _nppGUI._cloudPath;
-		}
-		else
-		{
-			_isCloud = false;
-		}
-	}
+	// Detection cloud settings (disabled: always start with "No Cloud")
+	// The cloud choice file is intentionally ignored at startup so that
+	// "No Cloud" is always the default. Users can still enable cloud
+	// manually via Settings -> Preferences -> Cloud & Link.
+	_isCloud = false;
 
 	//
 	// the 1st priority: custom settings dir via command line argument
