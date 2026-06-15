@@ -17,7 +17,8 @@ rem along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 echo on
 
-if %SIGN% == 0 goto NoSign
+if "%SIGN%"=="0" goto NoSign
+if not defined SIGN goto NoSign
 
 REM commands to sign
 
@@ -477,7 +478,8 @@ If ErrorLevel 1 goto End
 ren npp.Installer.x64.msi npp.%VERSION%.Installer.x64.msi
 If ErrorLevel 1 goto End
 
-if %SIGN% == 0 goto NoSignInstaller
+if "%SIGN%"=="0" goto NoSignInstaller
+if not defined SIGN goto NoSignInstaller
 
 REM Only sign x64 installer and MSI
 %Sign_by_GlobalSignCert% %nppInstallerVar% npp.%VERSION%.Installer.x64.exe npp.%VERSION%.Installer.x64.msi
