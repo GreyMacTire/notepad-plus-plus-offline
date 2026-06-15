@@ -6572,6 +6572,9 @@ intptr_t CALLBACK CloudAndLinkSubDlg::run_dlgProc(UINT message, WPARAM wParam, L
 			::SendDlgItemMessage(_hSelf, IDC_CLOUDPATH_EDIT, WM_SETTEXT, 0, reinterpret_cast<LPARAM>(nppGUI._cloudPath.c_str()));
 			::EnableWindow(::GetDlgItem(_hSelf, IDC_CLOUDPATH_EDIT), withCloud);
 			::EnableWindow(::GetDlgItem(_hSelf, IDD_CLOUDPATH_BROWSE_BUTTON), withCloud);
+			// Cloud settings are disabled — always forced to "No Cloud"
+			::EnableWindow(::GetDlgItem(_hSelf, IDC_NOCLOUD_RADIO), FALSE);
+			::EnableWindow(::GetDlgItem(_hSelf, IDC_WITHCLOUD_RADIO), FALSE);
 
 			BOOL linkEnable = nppGUI._styleURL != urlDisable;
 			BOOL dontUnderline = (nppGUI._styleURL == urlNoUnderLineFg) || (nppGUI._styleURL == urlNoUnderLineBg);
