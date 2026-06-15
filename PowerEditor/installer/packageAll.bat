@@ -203,9 +203,9 @@ rem replace ".Installer.exe" with nothing in "6.9.Installer.exe" - now VERSION i
 
 rem echo %VERSION%
 
-cd ..\msi\
-dotnet build -c release -p:OutputPath=..\build\ -p:DefineConstants=Version=%VERSION%
-If ErrorLevel 1 goto End
+rem cd ..\msi\
+rem dotnet build -c release -p:OutputPath=..\build\ -p:DefineConstants=Version=%VERSION%
+rem If ErrorLevel 1 goto End
 
 cd ..\build\
 
@@ -219,13 +219,13 @@ If ErrorLevel 1 goto End
 ren npp.portable.minimalist.x64.7z npp.%VERSION%.portable.minimalist.x64.7z
 If ErrorLevel 1 goto End
 
-ren npp.Installer.x64.msi npp.%VERSION%.Installer.x64.msi
-If ErrorLevel 1 goto End
+rem ren npp.Installer.x64.msi npp.%VERSION%.Installer.x64.msi
+rem If ErrorLevel 1 goto End
 
 if %SIGN% == 0 goto NoSignInstaller
 
-%Sign_by_GlobalSignCert% %nppInstallerVar% npp.%VERSION%.Installer.x64.exe npp.%VERSION%.Installer.x64.msi
-If ErrorLevel 1 goto End
+rem %Sign_by_GlobalSignCert% %nppInstallerVar% npp.%VERSION%.Installer.x64.exe npp.%VERSION%.Installer.x64.msi
+rem If ErrorLevel 1 goto End
 
 :NoSignInstaller
 
