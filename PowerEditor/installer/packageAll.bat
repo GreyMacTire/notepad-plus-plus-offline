@@ -17,6 +17,7 @@ rem along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 echo on
 
+set SIGN=0
 if "%SIGN%" == "0" goto NoSign
 
 REM commands to sign
