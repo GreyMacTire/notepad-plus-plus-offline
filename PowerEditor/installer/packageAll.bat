@@ -210,13 +210,13 @@ rem If ErrorLevel 1 goto End
 cd ..\build\
 
 
-ren npp.portable.x64.zip npp.%VERSION%.portable.x64.zip
+ren npp.portable.x64.zip npp.portable.x64.zip
 If ErrorLevel 1 goto End
 
-ren npp.portable.x64.7z npp.%VERSION%.portable.x64.7z
+ren npp.portable.x64.7z npp.portable.x64.7z
 If ErrorLevel 1 goto End
 
-ren npp.portable.minimalist.x64.7z npp.%VERSION%.portable.minimalist.x64.7z
+ren npp.portable.minimalist.x64.7z npp.portable.minimalist.x64.7z
 If ErrorLevel 1 goto End
 
 rem ren npp.Installer.x64.msi npp.%VERSION%.Installer.x64.msi
