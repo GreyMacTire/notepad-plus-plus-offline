@@ -67,6 +67,9 @@ SectionGroup "Plugins" Plugins
 SectionGroupEnd
 
 ${MementoSection} "Auto-Updater" AutoUpdater
+!ifdef NOUPDATER
+	Delete $INSTDIR\updater\*.*
+!else
 	${If} $noUpdater == "true"
 		Delete $INSTDIR\updater\*.*
 	${Else}
@@ -97,6 +100,7 @@ ${MementoSection} "Auto-Updater" AutoUpdater
 		SetOutPath "$PLUGINSDIR\gupLocalization"
 		File "..\bin\updater\translations\"
 	${EndIf}
+!endif
 	
 ${MementoSectionEnd}
 

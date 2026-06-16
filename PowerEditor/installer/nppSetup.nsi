@@ -187,6 +187,9 @@ notInSilentMode:
 	; End of "/closeRunningNpp"
 
 	; Begin of "/noUpdater"
+!ifdef NOUPDATER
+	StrCpy $noUpdater "true"
+!else
 	${GetParameters} $R0 
 	${GetOptions} $R0 "/noUpdater" $R1 ;case insensitive 
 	IfErrors withUpdater withoutUpdater
@@ -196,6 +199,7 @@ withUpdater:
 withoutUpdater:
 	StrCpy $noUpdater "true"
 updaterDone:
+!endif
 
 	${If} $noUpdater == "true"
 		!insertmacro UnSelectSection ${AutoUpdater}
